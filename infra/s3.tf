@@ -24,9 +24,11 @@ resource "aws_s3_bucket_ownership_controls" "this" {
 }
 
 resource "aws_s3_bucket_acl" "example" {
+  for_each = aws_s3_bucket.lakehouse_zones
+
   depends_on = [aws_s3_bucket_ownership_controls.this]
 
-  bucket = aws_s3_bucket.this.id
+  bucket = each.value.id
   acl    = "private"
 }
 
