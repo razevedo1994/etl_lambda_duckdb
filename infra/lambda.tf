@@ -1,6 +1,6 @@
 data "archive_file" "lambda" {
   type          = "zip"
-  source_file   = "./app/handler.py"
+  source_file   = "./app/main.py"
   output_path   = "./lambda_layer/lambda_function_payload.zip"
 }
 
