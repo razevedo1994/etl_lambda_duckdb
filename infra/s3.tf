@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "lakehouse_zones" {
     bucket = each.key
 
     tags = {
-        Name = "Bucket ${each.key}"
+        Name = "poc-lambda-duckdb"
     }
 }
 
