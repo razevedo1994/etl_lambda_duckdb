@@ -6,7 +6,7 @@ locals {
 resource "aws_s3_bucket" "lakehouse_zones" {
     for_each = local.bucket_names
 
-    bucket = each.key
+    bucket = "${each.key}-${data.aws_caller_identity.current.account_id}"
 
     tags = {
         Name = "poc-lambda-duckdb"
