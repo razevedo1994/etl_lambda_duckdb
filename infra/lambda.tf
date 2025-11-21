@@ -7,7 +7,7 @@ data "archive_file" "lambda" {
 resource "aws_lambda_function" "this" {
   filename      = "./lambda_layer/lambda_function_payload.zip"
   function_name = var.lambda_name
-  handler       = "handler.lambda_handler"
+  handler       = "main.lambda_handler"
   role          = aws_iam_role.role.arn
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
