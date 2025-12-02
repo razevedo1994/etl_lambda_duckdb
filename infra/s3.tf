@@ -48,10 +48,14 @@ resource "aws_s3_bucket_notification" "aws-lambda-raw-trigger" {
   bucket = aws_s3_bucket.lakehouse_zones["raw"].id
 
   lambda_function {
+    
     lambda_function_arn = aws_lambda_function.this.arn
     events              = ["s3:ObjectCreated:*"]
 
   }
+
+  depends_on = [aws_lambda_permission.this]
+
 }
 resource "aws_lambda_permission" "this" {
   statement_id  = "AllowS3Invoke"
